@@ -1,137 +1,202 @@
 export const WelcomeContent = () => {
   return (
-    <div className="w-full">
-      {/* Hero Introduction - Full Width */}
-      <section className="bg-linear-to-br from-blue-500 via-purple-500 to-indigo-600 text-white py-16 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Unstructured Data Harmonization</h2>
-          <p className="text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto">
-            See how Data Cloud transforms unstructured data (PDFs, text, videos, audio) into harmonized data model
-            objects with HTML representations—making knowledge accessible in Salesforce CRM and Agentforce citations.
-          </p>
-        </div>
-      </section>
-
-      {/* How Agentforce Helps - Colored Background */}
-      <section className="bg-linear-to-r from-slate-50 to-blue-50 py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-            How It Works: From Raw Data to Citations
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="flex items-start gap-4">
-                <div className="bg-blue-100 rounded-lg p-3">
-                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Ingest & Chunk</h3>
-                  <p className="text-gray-600">
-                    Data Cloud ingests unstructured data (PDFs, text, videos, audio) and breaks them into text chunks
-                    for processing
-                  </p>
-                </div>
-              </div>
+    <div className="w-full bg-linear-to-b from-slate-50 to-white">
+      {/* Hero Introduction - Clean & Modern */}
+      <section className="py-12 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center space-y-4">
+            <div className="inline-block">
+              <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
+                Data Cloud + Agentforce
+              </span>
             </div>
-
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="flex items-start gap-4">
-                <div className="bg-purple-100 rounded-lg p-3">
-                  <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Vectorize for RAG</h3>
-                  <p className="text-gray-600">
-                    Text chunks are vectorized and used in Retrieval Augmented Generation (RAG) with Agentforce
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="flex items-start gap-4">
-                <div className="bg-indigo-100 rounded-lg p-3">
-                  <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Create HTML Objects</h3>
-                  <p className="text-gray-600">
-                    Creates harmonized data model objects containing HTML representations of the unstructured data
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="flex items-start gap-4">
-                <div className="bg-green-100 rounded-lg p-3">
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Citations in Agentforce</h3>
-                  <p className="text-gray-600">
-                    HTML objects are added as citations in Agentforce message responses, providing full source context
-                    and traceability
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Try It Out - Call to Action */}
-      <section className="bg-linear-to-r from-blue-600 to-purple-600 py-16 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 text-center">See It in Action</h2>
-          <p className="text-xl text-blue-100 leading-relaxed mb-8 text-center">
-            Chat with Agentforce using the widget in the bottom-right corner. When Agentforce responds with cited
-            sources, click the message to view the harmonized HTML content from the citation object.
-          </p>
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-white bg-opacity-90 backdrop-blur rounded-xl p-5 shadow-lg hover:bg-opacity-100 transition-all">
-              <p className="text-gray-800 font-medium">"What's in the customer knowledge base?"</p>
-            </div>
-            <div className="bg-white bg-opacity-90 backdrop-blur rounded-xl p-5 shadow-lg hover:bg-opacity-100 transition-all">
-              <p className="text-gray-800 font-medium">"Show me product documentation"</p>
-            </div>
-            <div className="bg-white bg-opacity-90 backdrop-blur rounded-xl p-5 shadow-lg hover:bg-opacity-100 transition-all">
-              <p className="text-gray-800 font-medium">"Find service case solutions"</p>
-            </div>
-          </div>
-          <div className="mt-8 text-center">
-            <p className="text-blue-100 text-lg">
-              💡 <span className="font-semibold">Key Feature:</span> Click on bot responses to see the citation's HTML
-              content and metadata—just like viewing an attached knowledge article in Salesforce CRM
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+              Unstructured Data
+              <br />
+              <span className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Harmonization
+              </span>
+            </h1>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              Transform unstructured data into actionable knowledge. Data Cloud converts PDFs, text, videos, and audio
+              into harmonized HTML objects—accessible in Salesforce CRM and Agentforce citations.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works - Card Layout */}
+      <section className="py-12 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">From Raw Data to Citations</h2>
+            <p className="text-base text-gray-600 max-w-2xl mx-auto">
+              A seamless pipeline that turns unstructured content into intelligent, citable knowledge
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* Card 1 */}
+            <div className="group relative bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-lg hover:border-blue-200 transition-all duration-300">
+              <div className="absolute top-3 right-3 text-3xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
+                01
+              </div>
+              <div className="bg-blue-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3 group-hover:bg-blue-100 transition-colors">
+                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <h3 className="font-bold text-base text-gray-900 mb-1.5">Ingest & Chunk</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Data Cloud ingests unstructured files and breaks them into processable text chunks
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="group relative bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-lg hover:border-purple-200 transition-all duration-300">
+              <div className="absolute top-3 right-3 text-3xl font-bold text-gray-100 group-hover:text-purple-100 transition-colors">
+                02
+              </div>
+              <div className="bg-purple-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3 group-hover:bg-purple-100 transition-colors">
+                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
+                  />
+                </svg>
+              </div>
+              <h3 className="font-bold text-base text-gray-900 mb-1.5">Vectorize for RAG</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Chunks are vectorized and used in Retrieval Augmented Generation with Agentforce
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="group relative bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-lg hover:border-indigo-200 transition-all duration-300">
+              <div className="absolute top-3 right-3 text-3xl font-bold text-gray-100 group-hover:text-indigo-100 transition-colors">
+                03
+              </div>
+              <div className="bg-indigo-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3 group-hover:bg-indigo-100 transition-colors">
+                <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              </div>
+              <h3 className="font-bold text-base text-gray-900 mb-1.5">Create HTML Objects</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Harmonized data model objects are created with HTML representations of the data
+              </p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="group relative bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-lg hover:border-green-200 transition-all duration-300">
+              <div className="absolute top-3 right-3 text-3xl font-bold text-gray-100 group-hover:text-green-100 transition-colors">
+                04
+              </div>
+              <div className="bg-green-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3 group-hover:bg-green-100 transition-colors">
+                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                  />
+                </svg>
+              </div>
+              <h3 className="font-bold text-base text-gray-900 mb-1.5">Citations in Agentforce</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                HTML objects appear as citations in Agentforce responses with full source context
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Try It Out - Minimal CTA */}
+      <section className="py-12 px-6 pb-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">See It in Action</h2>
+            <p className="text-base text-gray-600 max-w-2xl mx-auto">
+              Chat with Agentforce and click on responses to view citation HTML content and metadata
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4 mb-6">
+            <div className="group bg-white rounded-xl p-4 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all cursor-pointer">
+              <div className="flex items-start gap-3">
+                <div className="bg-blue-50 rounded-lg p-2 group-hover:bg-blue-100 transition-colors">
+                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                    />
+                  </svg>
+                </div>
+                <p className="text-gray-700 font-medium text-sm leading-relaxed">
+                  "What's in the customer knowledge base?"
+                </p>
+              </div>
+            </div>
+
+            <div className="group bg-white rounded-xl p-4 border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all cursor-pointer">
+              <div className="flex items-start gap-3">
+                <div className="bg-purple-50 rounded-lg p-2 group-hover:bg-purple-100 transition-colors">
+                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    />
+                  </svg>
+                </div>
+                <p className="text-gray-700 font-medium text-sm leading-relaxed">"Show me product documentation"</p>
+              </div>
+            </div>
+
+            <div className="group bg-white rounded-xl p-4 border border-gray-200 hover:border-indigo-300 hover:shadow-lg transition-all cursor-pointer">
+              <div className="flex items-start gap-3">
+                <div className="bg-indigo-50 rounded-lg p-2 group-hover:bg-indigo-100 transition-colors">
+                  <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                    />
+                  </svg>
+                </div>
+                <p className="text-gray-700 font-medium text-sm leading-relaxed">"Find service case solutions"</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <div className="inline-flex items-center gap-3 bg-linear-to-r from-blue-50 to-purple-50 rounded-2xl px-6 py-3 border border-blue-100">
+              <div className="bg-white rounded-full p-2 shadow-sm">
+                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div className="text-left">
+                <p className="text-sm font-semibold text-gray-900">Quick Start</p>
+                <p className="text-xs text-gray-600">Look for the chat widget in the bottom-right corner</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
