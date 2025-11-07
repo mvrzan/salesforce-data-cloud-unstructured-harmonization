@@ -50,10 +50,10 @@ const startSession = async (req, res) => {
 
     console.log(`${getCurrentTimestamp()} ✅ - startSession - Agentforce session started!`);
 
+    console.log("data", data);
+
     res.status(200).json({
-      accessToken,
-      instanceUrl,
-      data,
+      messages: data.messages,
     });
   } catch (error) {
     console.error(`${getCurrentTimestamp()} ❌ - startSession - Error occurred: ${error.message}`);
