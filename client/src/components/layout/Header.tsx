@@ -11,7 +11,7 @@ export const Header = () => {
             <div className="border-l border-gray-300 h-8"></div>
             <div>
               <h1 className="text-lg font-semibold text-gray-900">Unstructured Data Harmonization</h1>
-              <p className="text-xs text-gray-500">Data Cloud Demo</p>
+              <p className="text-xs text-gray-500">Data 360</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
