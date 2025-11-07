@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Message } from "./types/message";
 import { Header } from "./components/layout/Header";
+import { Footer } from "./components/layout/Footer";
 import { WelcomeContent } from "./components/content/WelcomeContent";
 import { MessageDisplay } from "./components/content/MessageDisplay";
 import { ChatWidget } from "./components/chat/ChatWidget";
@@ -71,16 +72,18 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <Header />
 
-      <main>
+      <main className="flex-1">
         {selectedMessage ? (
           <MessageDisplay message={selectedMessage} onBack={handleBackToWelcome} />
         ) : (
           <WelcomeContent />
         )}
       </main>
+
+      <Footer />
 
       <ChatWidget
         messages={messages}
