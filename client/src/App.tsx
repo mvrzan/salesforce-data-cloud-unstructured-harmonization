@@ -11,21 +11,24 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [messageSequence, setMessageSequence] = useState(1);
+  const [sessionInitialized, setSessionInitialized] = useState(false);
+  const [agentforceSessionId, setAgentforceSessionId] = useState<string | null>(null);
 
-  // Manage Agentforce session ID
-  const [sessionId] = useState<string>(() => {
+  // Manage external session key (used to create the session)
+  const [externalSessionKey] = useState<string>(() => {
     // Check if we have an existing session in sessionStorage
-    const existingSession = sessionStorage.getItem("agentforce-session-id");
+    const existingSession = sessionStorage.getItem("agentforce-session-key");
     if (existingSession) {
-      console.log("Using existing session ID:", existingSession);
+      console.log("Using existing external session key:", existingSession);
       return existingSession;
     }
 
     // Generate new UUID if none exists
-    const newSessionId = crypto.randomUUID();
-    sessionStorage.setItem("agentforce-session-id", newSessionId);
-    console.log("Generated new session ID:", newSessionId);
-    return newSessionId;
+    const newSessionKey = crypto.randomUUID();
+    sessionStorage.setItem("agentforce-session-key", newSessionKey);
+    console.log("Generated new external session key:", newSessionKey);
+    return newSessionKey;
   });
 
   // Handle new message from user
@@ -40,14 +43,27 @@ function App() {
     setMessages((prev) => [...prev, userMessage]);
 
     try {
-      // Call the start-session endpoint with the sessionId
-      const response = await fetch(`http://localhost:3000/api/v1/start-session?sessionId=${sessionId}`);
+      // Send message to Agentforce with sessionId and sequenceId
+      const response = await fetch(`http://localhost:3000/api/v1/send-message`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sessionId: agentforceSessionId,
+          message: content,
+          sequenceId: messageSequence,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error(`API error: ${response.statusText}`);
       }
 
       const data = await response.json();
+
+      // Increment sequence for next message
+      setMessageSequence((prev) => prev + 1);
 
       // Extract the first message from the messages array
       const agentResponse = data.messages?.[0];
@@ -101,6 +117,52 @@ function App() {
     setSelectedMessage(null);
   };
 
+  // Handle chat toggle - initialize session when opened
+  const handleChatToggle = async () => {
+    const newIsOpen = !isChatOpen;
+    setIsChatOpen(newIsOpen);
+
+    // Initialize session when chat is opened for the first time
+    if (newIsOpen && !sessionInitialized) {
+      try {
+        console.log("Initializing Agentforce session...");
+        const response = await fetch(`http://localhost:3000/api/v1/start-session?sessionId=${externalSessionKey}`);
+
+        if (!response.ok) {
+          throw new Error(`Failed to start session: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("Session initialized:", data);
+
+        // Store the actual session ID returned by Agentforce
+        setAgentforceSessionId(data.sessionId);
+        setSessionInitialized(true);
+
+        // Optionally add the welcome message from Agentforce
+        if (data.messages?.[0]) {
+          const welcomeMessage: Message = {
+            id: data.messages[0].id || `msg-${Date.now()}-welcome`,
+            content: data.messages[0].message || "Hi, I'm an AI service assistant. How can I help you?",
+            timestamp: new Date(),
+            sender: "bot",
+            type: data.messages[0].type,
+            feedbackId: data.messages[0].feedbackId,
+            isContentSafe: data.messages[0].isContentSafe,
+            message: data.messages[0].message,
+            metrics: data.messages[0].metrics,
+            planId: data.messages[0].planId,
+            result: data.messages[0].result,
+            citedReferences: data.messages[0].citedReferences,
+          };
+          setMessages([welcomeMessage]);
+        }
+      } catch (error) {
+        console.error("Error initializing session:", error);
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -120,7 +182,7 @@ function App() {
         onMessageClick={handleMessageClick}
         onSendMessage={handleSendMessage}
         isOpen={isChatOpen}
-        onToggle={() => setIsChatOpen(!isChatOpen)}
+        onToggle={handleChatToggle}
       />
     </div>
   );
