@@ -106,9 +106,9 @@ function App() {
 
   // Handle message click
   const handleMessageClick = (message: Message) => {
-    if (message.properties || message.htmlContent) {
+    // Show details for bot messages (they have the Agentforce data)
+    if (message.sender === "bot") {
       setSelectedMessage(message);
-      setIsChatOpen(false); // Optionally close chat when viewing message details
     }
   };
 
