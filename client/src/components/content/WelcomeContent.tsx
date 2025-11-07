@@ -7,7 +7,7 @@ export const WelcomeContent = () => {
           <div className="text-center space-y-4">
             <div className="inline-block">
               <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
-                Data Cloud + Agentforce
+                Data 360 + Agentforce
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
@@ -18,7 +18,7 @@ export const WelcomeContent = () => {
               </span>
             </h1>
             <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Transform unstructured data into actionable knowledge. Data Cloud converts PDFs, text, videos, and audio
+              Transform unstructured data into actionable knowledge. Data 360 converts PDFs, text, videos, and audio
               into harmonized HTML objects—accessible in Salesforce CRM and Agentforce citations.
             </p>
           </div>
@@ -53,7 +53,7 @@ export const WelcomeContent = () => {
               </div>
               <h3 className="font-bold text-base text-gray-900 mb-1.5">Ingest & Chunk</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Data Cloud ingests unstructured files and breaks them into processable text chunks
+                Data 360 ingests unstructured files and breaks them into processable text chunks
               </p>
             </div>
 
@@ -124,7 +124,7 @@ export const WelcomeContent = () => {
       </section>
 
       {/* Try It Out - Minimal CTA */}
-      <section className="py-12 px-6 pb-24">
+      <section className="py-12 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">See It in Action</h2>
