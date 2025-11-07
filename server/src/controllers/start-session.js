@@ -48,8 +48,10 @@ const startSession = async (req, res) => {
     const data = await response.json();
 
     console.log(`${getCurrentTimestamp()} ✅ - startSession - Agentforce session started!`);
+    console.log(`${getCurrentTimestamp()} 🔑 - startSession - Session ID from Agentforce: ${data.sessionId}`);
 
     res.status(200).json({
+      sessionId: data.sessionId, // Return the actual session ID from Agentforce
       messages: data.messages,
     });
   } catch (error) {
