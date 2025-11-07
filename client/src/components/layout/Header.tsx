@@ -15,6 +15,10 @@ export const Header = () => {
             </div>
           </div>
           <div className="flex items-center gap-3">
+            <div className="text-right">
+              <p className="text-sm font-semibold text-gray-900">Powered by</p>
+              <p className="text-xs text-gray-500">Agentforce</p>
+            </div>
             <img src={agentforceLogo} alt="Agentforce" className="h-7 object-contain" />
           </div>
         </div>
