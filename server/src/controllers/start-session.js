@@ -1,13 +1,12 @@
 import { getCurrentTimestamp } from "../utils/loggingUtil.js";
 import sfAuthToken from "../utils/authToken.js";
-import { randomUUID } from "crypto";
 
 const startSession = async (req, res) => {
   try {
     console.log(`${getCurrentTimestamp()} 📥 - startSession - Request received...`);
 
-    // Get sessionId from query params, or generate new one if not provided
     const sessionId = req.query.sessionId;
+
     console.log(`${getCurrentTimestamp()} 🔑 - startSession - Using session ID: ${sessionId}`);
 
     const { accessToken, instanceUrl } = await sfAuthToken();
@@ -16,7 +15,7 @@ const startSession = async (req, res) => {
     const body = {
       externalSessionKey: sessionId,
       instanceConfig: {
-        endpoint: process.env.SALESFORCE_LOGIN_URL,
+        endpoint: instanceUrl,
       },
       streamingCapabilities: {
         chunkTypes: ["Text"],
@@ -49,8 +48,6 @@ const startSession = async (req, res) => {
     const data = await response.json();
 
     console.log(`${getCurrentTimestamp()} ✅ - startSession - Agentforce session started!`);
-
-    console.log("data", data);
 
     res.status(200).json({
       messages: data.messages,
