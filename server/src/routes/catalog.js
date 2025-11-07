@@ -1,8 +1,8 @@
 import { Router } from "express";
-import getChatSession from "../controllers/get-chat-session.js";
+import startSession from "../controllers/start-session.js";
 
 const catalogRoutes = Router();
 
-catalogRoutes.get("/api/v1/messages", getChatSession);
+catalogRoutes.get("/api/v1/start-session", startSession);
 
 export default catalogRoutes;
