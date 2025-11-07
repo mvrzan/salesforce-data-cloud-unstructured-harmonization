@@ -2,16 +2,19 @@ import { getCurrentTimestamp } from "../utils/loggingUtil.js";
 import sfAuthToken from "../utils/authToken.js";
 import { randomUUID } from "crypto";
 
-const startSession = async (_req, res) => {
+const startSession = async (req, res) => {
   try {
     console.log(`${getCurrentTimestamp()} 📥 - startSession - Request received...`);
 
+    // Get sessionId from query params, or generate new one if not provided
+    const sessionId = req.query.sessionId;
+    console.log(`${getCurrentTimestamp()} 🔑 - startSession - Using session ID: ${sessionId}`);
+
     const { accessToken, instanceUrl } = await sfAuthToken();
     const agentId = process.env.AGENTFORCE_AGENT_ID || "";
-    const UUID = randomUUID();
 
     const body = {
-      externalSessionKey: UUID,
+      externalSessionKey: sessionId,
       instanceConfig: {
         endpoint: process.env.SALESFORCE_LOGIN_URL,
       },
@@ -30,7 +33,7 @@ const startSession = async (_req, res) => {
       body: JSON.stringify(body),
     };
 
-    console.log(`${getCurrentTimestamp()} 🤖 - startSession - Retrieving Agentforce chat messages...`);
+    console.log(`${getCurrentTimestamp()} 🤖 - startSession - Starting Agentforce session...`);
 
     const response = await fetch(`https://api.salesforce.com/einstein/ai-agent/v1/agents/${agentId}/sessions`, config);
 
@@ -44,6 +47,8 @@ const startSession = async (_req, res) => {
     }
 
     const data = await response.json();
+
+    console.log(`${getCurrentTimestamp()} ✅ - startSession - Agentforce session started!`);
 
     res.status(200).json({
       accessToken,
