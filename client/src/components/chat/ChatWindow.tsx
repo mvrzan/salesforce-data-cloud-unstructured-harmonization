@@ -35,12 +35,12 @@ export const ChatWindow = ({
   }, [messages]);
 
   return (
-    <div className="w-96 h-[600px] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden">
+    <div className="w-full sm:w-96 h-[600px] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden">
       {/* Header */}
-      <div className="bg-linear-to-r from-blue-600 to-purple-600 text-white p-4 flex items-center justify-between">
+      <div className="bg-linear-to-r from-blue-600 to-purple-600 text-white p-3 sm:p-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-          <h3 className="font-semibold">Agentforce Assistant</h3>
+          <h3 className="font-semibold text-sm sm:text-base">Agentforce Assistant</h3>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -82,27 +82,27 @@ export const ChatWindow = ({
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
+      <div className="flex-1 overflow-y-auto p-3 sm:p-4 bg-gray-50">
         {messages.length === 0 && !isLoading && !sessionInitialized ? (
-          <div className="flex flex-col items-center justify-center h-full text-gray-500 gap-4">
-            <p className="text-center">
+          <div className="flex flex-col items-center justify-center h-full text-gray-500 gap-3 sm:gap-4 px-4">
+            <p className="text-center text-sm sm:text-base">
               Session ended
               <br />
-              <span className="text-sm">Ready to start a new conversation?</span>
+              <span className="text-xs sm:text-sm">Ready to start a new conversation?</span>
             </p>
             <button
               onClick={onStartNewSession}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
+              className="px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg text-sm sm:text-base font-semibold hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
             >
               Start Another Agentforce Session
             </button>
           </div>
         ) : messages.length === 0 && !isLoading ? (
-          <div className="flex items-center justify-center h-full text-gray-500">
-            <p className="text-center">
+          <div className="flex items-center justify-center h-full text-gray-500 px-4">
+            <p className="text-center text-sm sm:text-base">
               Start a conversation with Agentforce!
               <br />
-              <span className="text-sm">Ask about data harmonization, analysis, or insights.</span>
+              <span className="text-xs sm:text-sm">Ask about data harmonization, analysis, or insights.</span>
             </p>
           </div>
         ) : (

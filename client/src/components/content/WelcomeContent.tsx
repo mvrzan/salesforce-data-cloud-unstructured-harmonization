@@ -2,22 +2,22 @@ export const WelcomeContent = () => {
   return (
     <div className="w-full bg-linear-to-b from-slate-50 to-white">
       {/* Hero Introduction - Clean & Modern */}
-      <section className="py-8 px-6">
+      <section className="py-6 sm:py-8 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center space-y-3">
+          <div className="text-center space-y-2 sm:space-y-3">
             <div className="inline-block">
-              <span className="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">
+              <span className="px-3 sm:px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">
                 Data 360 + Agentforce
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
               Unstructured Data
               <br />
               <span className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Harmonization
               </span>
             </h1>
-            <p className="text-base text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl mx-auto px-4">
               Transform unstructured data into actionable knowledge. Data 360 converts PDFs, text, videos, and audio
               into harmonized HTML objects—accessible in Salesforce CRM and Agentforce citations.
             </p>
@@ -26,16 +26,16 @@ export const WelcomeContent = () => {
       </section>
 
       {/* How It Works - Card Layout */}
-      <section className="py-8 px-6">
+      <section className="py-6 sm:py-8 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-6">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">From Raw Data to Citations</h2>
-            <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-4 sm:mb-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">From Raw Data to Citations</h2>
+            <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto px-4">
               A seamless pipeline that turns unstructured content into intelligent, citable knowledge
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {/* Card 1 */}
             <div className="group relative bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-blue-200 transition-all duration-300">
               <div className="absolute top-2 right-2 text-2xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
@@ -124,16 +124,16 @@ export const WelcomeContent = () => {
       </section>
 
       {/* Try It Out - Minimal CTA */}
-      <section className="py-6 px-6">
+      <section className="py-4 sm:py-6 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-5">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">See It in Action</h2>
-            <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-4 sm:mb-5">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">See It in Action</h2>
+            <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto px-4">
               Chat with Agentforce and click on responses to view citation HTML content and metadata
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-3 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-4">
             <div className="group bg-white rounded-lg p-3 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all cursor-pointer">
               <div className="flex items-start gap-2">
                 <div className="bg-blue-50 rounded-lg p-2 group-hover:bg-blue-100 transition-colors">
@@ -188,8 +188,8 @@ export const WelcomeContent = () => {
           </div>
 
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-linear-to-r from-blue-50 to-purple-50 rounded-xl px-4 py-2 border border-blue-100">
-              <div className="bg-white rounded-full p-1.5 shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-linear-to-r from-blue-50 to-purple-50 rounded-xl px-3 sm:px-4 py-2 border border-blue-100">
+              <div className="bg-white rounded-full p-1.5 shadow-sm shrink-0">
                 <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
