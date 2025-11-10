@@ -16,6 +16,7 @@ const deleteSession = async (req, res) => {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
+        "x-session-end-reason": "UserRequest",
       },
     };
 
