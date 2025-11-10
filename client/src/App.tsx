@@ -128,6 +128,8 @@ function App() {
       return;
     }
 
+    setIsLoading(true);
+
     try {
       console.log("Deleting Agentforce session...");
       const response = await fetch(`http://localhost:3000/api/v1/delete-session`, {
@@ -158,6 +160,54 @@ function App() {
       console.log("Generated new external session key:", newSessionKey);
     } catch (error) {
       console.error("Error deleting session:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Handle starting a new session
+  const handleStartNewSession = async () => {
+    setIsLoading(true);
+
+    try {
+      const newSessionKey = sessionStorage.getItem("agentforce-session-key") || crypto.randomUUID();
+
+      console.log("Initializing new Agentforce session...");
+      const response = await fetch(`http://localhost:3000/api/v1/start-session?sessionId=${newSessionKey}`);
+
+      if (!response.ok) {
+        throw new Error(`Failed to start new session: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log("New session initialized:", data);
+
+      // Store the actual session ID returned by Agentforce
+      setAgentforceSessionId(data.sessionId);
+      setSessionInitialized(true);
+
+      // Add the welcome message from Agentforce
+      if (data.messages?.[0]) {
+        const welcomeMessage: Message = {
+          id: data.messages[0].id || `msg-${Date.now()}-welcome`,
+          content: data.messages[0].message || "Hi, I'm an AI service assistant. How can I help you?",
+          timestamp: new Date(),
+          sender: "bot",
+          type: data.messages[0].type,
+          feedbackId: data.messages[0].feedbackId,
+          isContentSafe: data.messages[0].isContentSafe,
+          message: data.messages[0].message,
+          metrics: data.messages[0].metrics,
+          planId: data.messages[0].planId,
+          result: data.messages[0].result,
+          citedReferences: data.messages[0].citedReferences,
+        };
+        setMessages([welcomeMessage]);
+      }
+    } catch (error) {
+      console.error("Error starting new session:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -233,6 +283,8 @@ function App() {
         onMessageClick={handleMessageClick}
         onSendMessage={handleSendMessage}
         onDeleteSession={handleDeleteSession}
+        onStartNewSession={handleStartNewSession}
+        sessionInitialized={sessionInitialized}
         isLoading={isLoading}
         isOpen={isChatOpen}
         onToggle={handleChatToggle}
