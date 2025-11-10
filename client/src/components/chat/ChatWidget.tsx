@@ -7,6 +7,8 @@ export const ChatWidget = ({
   onMessageClick,
   onSendMessage,
   onDeleteSession,
+  onStartNewSession,
+  sessionInitialized,
   isLoading,
   isOpen,
   onToggle,
@@ -19,6 +21,8 @@ export const ChatWidget = ({
           onMessageClick={onMessageClick}
           onSendMessage={onSendMessage}
           onDeleteSession={onDeleteSession}
+          onStartNewSession={onStartNewSession}
+          sessionInitialized={sessionInitialized}
           isLoading={isLoading}
           onClose={onToggle}
         />
