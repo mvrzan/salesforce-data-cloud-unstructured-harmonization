@@ -14,6 +14,7 @@ function App() {
   const [messageSequence, setMessageSequence] = useState(1);
   const [sessionInitialized, setSessionInitialized] = useState(false);
   const [agentforceSessionId, setAgentforceSessionId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Manage external session key (used to create the session)
   const [externalSessionKey] = useState<string>(() => {
@@ -41,6 +42,7 @@ function App() {
     };
 
     setMessages((prev) => [...prev, userMessage]);
+    setIsLoading(true);
 
     try {
       // Send message to Agentforce with sessionId and sequenceId
@@ -101,6 +103,8 @@ function App() {
       };
 
       setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -160,10 +164,12 @@ function App() {
   // Handle chat toggle - initialize session when opened
   const handleChatToggle = async () => {
     const newIsOpen = !isChatOpen;
-    setIsChatOpen(newIsOpen);
 
     // Initialize session when chat is opened for the first time
     if (newIsOpen && !sessionInitialized) {
+      setIsLoading(true);
+      setIsChatOpen(newIsOpen); // Open chat and show loading
+
       try {
         console.log("Initializing Agentforce session...");
         const response = await fetch(`http://localhost:3000/api/v1/start-session?sessionId=${externalSessionKey}`);
@@ -199,7 +205,12 @@ function App() {
         }
       } catch (error) {
         console.error("Error initializing session:", error);
+      } finally {
+        setIsLoading(false);
       }
+    } else {
+      // Just toggle if session already initialized
+      setIsChatOpen(newIsOpen);
     }
   };
 
@@ -222,6 +233,7 @@ function App() {
         onMessageClick={handleMessageClick}
         onSendMessage={handleSendMessage}
         onDeleteSession={handleDeleteSession}
+        isLoading={isLoading}
         isOpen={isChatOpen}
         onToggle={handleChatToggle}
       />
