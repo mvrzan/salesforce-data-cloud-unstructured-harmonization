@@ -8,10 +8,18 @@ interface ChatWindowProps {
   onMessageClick: (message: Message) => void;
   onSendMessage: (content: string) => void;
   onDeleteSession: () => void;
+  isLoading: boolean;
   onClose: () => void;
 }
 
-export const ChatWindow = ({ messages, onMessageClick, onSendMessage, onDeleteSession, onClose }: ChatWindowProps) => {
+export const ChatWindow = ({
+  messages,
+  onMessageClick,
+  onSendMessage,
+  onDeleteSession,
+  isLoading,
+  onClose,
+}: ChatWindowProps) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -67,7 +75,7 @@ export const ChatWindow = ({ messages, onMessageClick, onSendMessage, onDeleteSe
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
-        {messages.length === 0 ? (
+        {messages.length === 0 && !isLoading ? (
           <div className="flex items-center justify-center h-full text-gray-500">
             <p className="text-center">
               Start a conversation with Agentforce!
@@ -80,6 +88,28 @@ export const ChatWindow = ({ messages, onMessageClick, onSendMessage, onDeleteSe
             {messages.map((message) => (
               <ChatMessage key={message.id} message={message} onClick={onMessageClick} />
             ))}
+            {isLoading && (
+              <div className="flex justify-start mb-4">
+                <div className="max-w-[80%] px-4 py-3 rounded-lg bg-gray-200">
+                  <div className="flex items-center gap-2">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-gray-600 rounded-full animate-bounce"></div>
+                      <div
+                        className="w-2 h-2 bg-gray-600 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.1s" }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-gray-600 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.2s" }}
+                      ></div>
+                    </div>
+                    <span className="text-xs text-gray-600">
+                      {messages.length === 0 ? "Starting Agentforce chat..." : "Agentforce is thinking..."}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
             <div ref={messagesEndRef} />
           </>
         )}
