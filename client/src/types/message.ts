@@ -28,6 +28,8 @@ export interface ChatWidgetProps {
   onMessageClick: (message: Message) => void;
   onSendMessage: (content: string) => void;
   onDeleteSession: () => void;
+  onStartNewSession: () => void;
+  sessionInitialized: boolean;
   isLoading: boolean;
   isOpen: boolean;
   onToggle: () => void;
