@@ -13,13 +13,13 @@ export const ChatMessage = ({ message, onClick }: ChatMessageProps) => {
       <div
         onClick={() => onClick(message)}
         className={`
-          max-w-[80%] px-4 py-2 rounded-lg cursor-pointer transition-all
+          max-w-[80%] px-4 py-2 rounded-lg cursor-pointer transition-all text-left
           ${isUser ? "bg-blue-600 text-white hover:bg-blue-700" : "bg-gray-200 text-gray-900 hover:bg-gray-300"}
           ${message.properties || message.htmlContent ? "ring-2 ring-offset-2 ring-purple-500" : ""}
         `}
       >
-        <p className="text-sm">{message.content}</p>
-        <span className="text-xs opacity-70 mt-1 block">
+        <p className="text-sm text-left">{message.content}</p>
+        <span className="text-xs opacity-70 mt-1 block text-left">
           {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
         </span>
         {(message.properties || message.htmlContent) && (
