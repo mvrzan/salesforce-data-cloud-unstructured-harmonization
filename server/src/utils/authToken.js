@@ -1,8 +1,26 @@
 import { getCurrentTimestamp } from "./loggingUtil.js";
 
+let tokenCache = {
+  accessToken: null,
+  instanceUrl: null,
+  expiresAt: null,
+};
+
 const sfAuthToken = async () => {
   try {
-    console.error(`${getCurrentTimestamp()} 🧰 - sfAuthToken - Requesting Salesforce access token...`);
+    if (tokenCache.accessToken && tokenCache.expiresAt && Date.now() < tokenCache.expiresAt) {
+      console.log(
+        `${getCurrentTimestamp()} ♻️  - sfAuthToken - Using cached access token (expires in ${Math.round(
+          (tokenCache.expiresAt - Date.now()) / 1000
+        )}s)`
+      );
+      return {
+        accessToken: tokenCache.accessToken,
+        instanceUrl: tokenCache.instanceUrl,
+      };
+    }
+
+    console.log(`${getCurrentTimestamp()} 🧰 - sfAuthToken - Requesting new Salesforce access token...`);
 
     const clientId = process.env.CLIENT_ID || "";
     const clientSecret = process.env.CLIENT_SECRET || "";
@@ -28,7 +46,23 @@ const sfAuthToken = async () => {
       throw new Error(`There was an error while getting the Salesforce Access Token: ${response.statusText}`);
     }
 
-    console.error(`${getCurrentTimestamp()} ✅ - sfAuthToken - Successfully provided!`);
+    // Cache the token with expiration time
+    // Salesforce tokens typically last 2 hours, but we'll refresh 5 minutes before expiry for safety
+    const expiresIn = data.expires_in || 7200; // Default to 2 hours if not provided
+    const bufferTime = 300; // 5 minutes buffer
+    const expiresAt = Date.now() + (expiresIn - bufferTime) * 1000;
+
+    tokenCache = {
+      accessToken: data.access_token,
+      instanceUrl: data.instance_url,
+      expiresAt,
+    };
+
+    console.log(
+      `${getCurrentTimestamp()} ✅ - sfAuthToken - Successfully provided! (valid for ${Math.round(
+        (expiresAt - Date.now()) / 1000
+      )}s)`
+    );
 
     return { accessToken: data.access_token, instanceUrl: data.instance_url };
   } catch (error) {
