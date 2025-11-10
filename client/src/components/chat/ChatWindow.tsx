@@ -8,6 +8,8 @@ interface ChatWindowProps {
   onMessageClick: (message: Message) => void;
   onSendMessage: (content: string) => void;
   onDeleteSession: () => void;
+  onStartNewSession: () => void;
+  sessionInitialized: boolean;
   isLoading: boolean;
   onClose: () => void;
 }
@@ -17,6 +19,8 @@ export const ChatWindow = ({
   onMessageClick,
   onSendMessage,
   onDeleteSession,
+  onStartNewSession,
+  sessionInitialized,
   isLoading,
   onClose,
 }: ChatWindowProps) => {
@@ -41,7 +45,7 @@ export const ChatWindow = ({
         <div className="flex items-center gap-2">
           <button
             onClick={onDeleteSession}
-            className="hover:bg-white hover:bg-opacity-20 rounded-full p-1 transition-colors"
+            className="hover:bg-black hover:bg-opacity-20 rounded-full p-1 transition-colors"
             title="End Session"
           >
             <svg
@@ -59,7 +63,11 @@ export const ChatWindow = ({
               />
             </svg>
           </button>
-          <button onClick={onClose} className="hover:bg-white hover:bg-opacity-20 rounded-full p-1 transition-colors">
+          <button
+            onClick={onClose}
+            className="hover:bg-black hover:bg-opacity-20 rounded-full p-1 transition-colors"
+            title="Close Chat"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -75,7 +83,21 @@ export const ChatWindow = ({
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
-        {messages.length === 0 && !isLoading ? (
+        {messages.length === 0 && !isLoading && !sessionInitialized ? (
+          <div className="flex flex-col items-center justify-center h-full text-gray-500 gap-4">
+            <p className="text-center">
+              Session ended
+              <br />
+              <span className="text-sm">Ready to start a new conversation?</span>
+            </p>
+            <button
+              onClick={onStartNewSession}
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
+            >
+              Start Another Agentforce Session
+            </button>
+          </div>
+        ) : messages.length === 0 && !isLoading ? (
           <div className="flex items-center justify-center h-full text-gray-500">
             <p className="text-center">
               Start a conversation with Agentforce!
