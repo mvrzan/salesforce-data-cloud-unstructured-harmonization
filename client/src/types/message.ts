@@ -27,6 +27,7 @@ export interface ChatWidgetProps {
   messages: Message[];
   onMessageClick: (message: Message) => void;
   onSendMessage: (content: string) => void;
+  onDeleteSession: () => void;
   isOpen: boolean;
   onToggle: () => void;
 }
