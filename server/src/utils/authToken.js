@@ -46,10 +46,8 @@ const sfAuthToken = async () => {
       throw new Error(`There was an error while getting the Salesforce Access Token: ${response.statusText}`);
     }
 
-    // Cache the token with expiration time
-    // Salesforce tokens typically last 2 hours, but we'll refresh 5 minutes before expiry for safety
-    const expiresIn = data.expires_in || 7200; // Default to 2 hours if not provided
-    const bufferTime = 300; // 5 minutes buffer
+    const expiresIn = data.expires_in || 7200;
+    const bufferTime = 300;
     const expiresAt = Date.now() + (expiresIn - bufferTime) * 1000;
 
     tokenCache = {
