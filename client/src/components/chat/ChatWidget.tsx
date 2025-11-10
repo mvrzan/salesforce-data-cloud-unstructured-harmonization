@@ -7,6 +7,7 @@ export const ChatWidget = ({
   onMessageClick,
   onSendMessage,
   onDeleteSession,
+  isLoading,
   isOpen,
   onToggle,
 }: ChatWidgetProps) => {
@@ -18,6 +19,7 @@ export const ChatWidget = ({
           onMessageClick={onMessageClick}
           onSendMessage={onSendMessage}
           onDeleteSession={onDeleteSession}
+          isLoading={isLoading}
           onClose={onToggle}
         />
       ) : (
