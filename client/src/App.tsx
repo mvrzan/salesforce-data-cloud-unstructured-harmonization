@@ -134,8 +134,6 @@ function App() {
       return;
     }
 
-    setIsLoading(true);
-
     try {
       console.log("Deleting Agentforce session...");
 
@@ -172,8 +170,6 @@ function App() {
       console.log("Generated new external session key:", newSessionKey);
     } catch (error) {
       console.error("Error deleting session:", error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
