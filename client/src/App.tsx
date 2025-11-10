@@ -117,6 +117,46 @@ function App() {
     setSelectedMessage(null);
   };
 
+  // Handle delete session
+  const handleDeleteSession = async () => {
+    if (!agentforceSessionId) {
+      console.log("No active session to delete");
+      return;
+    }
+
+    try {
+      console.log("Deleting Agentforce session...");
+      const response = await fetch(`http://localhost:3000/api/v1/delete-session`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sessionId: agentforceSessionId,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to delete session: ${response.statusText}`);
+      }
+
+      console.log("Session deleted successfully");
+
+      // Reset the chat state
+      setMessages([]);
+      setSessionInitialized(false);
+      setAgentforceSessionId(null);
+      setMessageSequence(1);
+
+      // Generate new external session key for next session
+      const newSessionKey = crypto.randomUUID();
+      sessionStorage.setItem("agentforce-session-key", newSessionKey);
+      console.log("Generated new external session key:", newSessionKey);
+    } catch (error) {
+      console.error("Error deleting session:", error);
+    }
+  };
+
   // Handle chat toggle - initialize session when opened
   const handleChatToggle = async () => {
     const newIsOpen = !isChatOpen;
@@ -181,6 +221,7 @@ function App() {
         messages={messages}
         onMessageClick={handleMessageClick}
         onSendMessage={handleSendMessage}
+        onDeleteSession={handleDeleteSession}
         isOpen={isChatOpen}
         onToggle={handleChatToggle}
       />
