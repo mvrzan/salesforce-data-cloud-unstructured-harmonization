@@ -5,6 +5,7 @@ import { Footer } from "./components/layout/Footer";
 import { WelcomeContent } from "./components/content/WelcomeContent";
 import { MessageDisplay } from "./components/content/MessageDisplay";
 import { ChatWidget } from "./components/chat/ChatWidget";
+import { generateSignature } from "./utils/requestSigner";
 import "./App.css";
 
 function App() {
@@ -45,11 +46,16 @@ function App() {
     setIsLoading(true);
 
     try {
+      // Generate signature for request
+      const { timestamp, signature } = await generateSignature("POST", "/api/v1/send-message");
+
       // Send message to Agentforce with sessionId and sequenceId
       const response = await fetch(`http://localhost:3000/api/v1/send-message`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "X-Timestamp": timestamp,
+          "X-Signature": signature,
         },
         body: JSON.stringify({
           sessionId: agentforceSessionId,
@@ -132,10 +138,16 @@ function App() {
 
     try {
       console.log("Deleting Agentforce session...");
+
+      // Generate signature for request
+      const { timestamp, signature } = await generateSignature("DELETE", "/api/v1/delete-session");
+
       const response = await fetch(`http://localhost:3000/api/v1/delete-session`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          "X-Timestamp": timestamp,
+          "X-Signature": signature,
         },
         body: JSON.stringify({
           sessionId: agentforceSessionId,
@@ -173,7 +185,19 @@ function App() {
       const newSessionKey = sessionStorage.getItem("agentforce-session-key") || crypto.randomUUID();
 
       console.log("Initializing new Agentforce session...");
-      const response = await fetch(`http://localhost:3000/api/v1/start-session?sessionId=${newSessionKey}`);
+
+      // Generate signature for request
+      const { timestamp, signature } = await generateSignature(
+        "GET",
+        `/api/v1/start-session?sessionId=${newSessionKey}`
+      );
+
+      const response = await fetch(`http://localhost:3000/api/v1/start-session?sessionId=${newSessionKey}`, {
+        headers: {
+          "X-Timestamp": timestamp,
+          "X-Signature": signature,
+        },
+      });
 
       if (!response.ok) {
         throw new Error(`Failed to start new session: ${response.statusText}`);
@@ -222,7 +246,19 @@ function App() {
 
       try {
         console.log("Initializing Agentforce session...");
-        const response = await fetch(`http://localhost:3000/api/v1/start-session?sessionId=${externalSessionKey}`);
+
+        // Generate signature for request
+        const { timestamp, signature } = await generateSignature(
+          "GET",
+          `/api/v1/start-session?sessionId=${externalSessionKey}`
+        );
+
+        const response = await fetch(`http://localhost:3000/api/v1/start-session?sessionId=${externalSessionKey}`, {
+          headers: {
+            "X-Timestamp": timestamp,
+            "X-Signature": signature,
+          },
+        });
 
         if (!response.ok) {
           throw new Error(`Failed to start session: ${response.statusText}`);
