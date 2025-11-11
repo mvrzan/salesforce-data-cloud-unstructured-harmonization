@@ -117,7 +117,7 @@ All requests require HMAC-SHA256 signature in headers:
 - [Node.js](https://nodejs.org/en) - JavaScript runtime
 - [Express](https://expressjs.com/) - Web framework
 - [Salesforce Einstein Agentforce API v1 ](https://developer.salesforce.com/docs/einstein/genai/guide/agent-api.html)- AI agent integration
-- OAuth 2.0 Client Credentials Flow - Salesforce authentication
+- [OAuth 2.0 Client Credentials Flow ](https://help.salesforce.com/s/articleView?id=xcloud.remoteaccess_oauth_client_credentials_flow.htm&type=5)- Salesforce authentication
 - [HMAC-SHA256](https://nodejs.org/api/crypto.html#cryptocreatehmacalgorithm-key-options) - Request signature validation
 
 For a more detailed overview of the development & production dependencies, please check server [`package.json`](./server/package.json) or client [`package.json`](./client/package.json).
