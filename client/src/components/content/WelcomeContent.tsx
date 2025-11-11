@@ -129,7 +129,11 @@ export const WelcomeContent = () => {
           <div className="text-center mb-4 sm:mb-5">
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">See It in Action</h2>
             <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto px-4">
-              Chat with Agentforce and click on responses to view citation HTML content and metadata
+              Ask Agentforce questions, then{" "}
+              <span className="font-semibold text-purple-700 bg-purple-50 px-2 py-0.5 rounded">
+                click on the responses
+              </span>{" "}
+              to view detailed metadata, citations, and HTML content
             </p>
           </div>
 
