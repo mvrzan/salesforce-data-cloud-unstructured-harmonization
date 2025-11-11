@@ -110,15 +110,15 @@ All requests require HMAC-SHA256 signature in headers:
 - [Vite](https://vitejs.dev/) - Build tool and dev server
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [shadcn/ui](https://ui.shadcn.com/) - Component library
-- Web Crypto API - HMAC-SHA256 signature generation
+- [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Crypto) - HMAC-SHA256 signature generation
 
 **Server**
 
 - [Node.js](https://nodejs.org/en) - JavaScript runtime
 - [Express](https://expressjs.com/) - Web framework
-- Salesforce Einstein Agentforce API v1 - AI agent integration
+- [Salesforce Einstein Agentforce API v1 ](https://developer.salesforce.com/docs/einstein/genai/guide/agent-api.html)- AI agent integration
 - OAuth 2.0 Client Credentials Flow - Salesforce authentication
-- HMAC-SHA256 - Request signature validation
+- [HMAC-SHA256](https://nodejs.org/api/crypto.html#cryptocreatehmacalgorithm-key-options) - Request signature validation
 
 For a more detailed overview of the development & production dependencies, please check server [`package.json`](./server/package.json) or client [`package.json`](./client/package.json).
 
