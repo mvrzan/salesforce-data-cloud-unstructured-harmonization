@@ -10,7 +10,7 @@ const sfAuthToken = async () => {
   try {
     if (tokenCache.accessToken && tokenCache.expiresAt && Date.now() < tokenCache.expiresAt) {
       console.log(
-        `${getCurrentTimestamp()} ♻️  - sfAuthToken - Using cached access token (expires in ${Math.round(
+        `${getCurrentTimestamp()} ♻️ - sfAuthToken - Using cached access token (expires in ${Math.round(
           (tokenCache.expiresAt - Date.now()) / 1000
         )}s)`
       );
