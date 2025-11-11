@@ -6,6 +6,8 @@
 
 # Harmonized Unstructured Data With Data 360
 
+Learn how you can use Harmonized Unstructured data with Data 360 and Agentforce.
+
 # Table of Contents
 
 - [Harmonized Unstructured Data With Data 360](#harmonized-unstructured-data-with-data-360)
