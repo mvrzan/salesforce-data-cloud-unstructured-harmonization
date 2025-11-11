@@ -174,9 +174,10 @@ To run this application locally, you will need the following:
    cp .env.example .env
    ```
 
-   Edit `client/.env` with the **same** API secret:
+   Edit `client/.env` with the **same** API secret and local API URL:
 
    ```bash
+   VITE_API_URL=http://localhost:3000
    VITE_API_SECRET=your_generated_secret_key
    ```
 
@@ -249,15 +250,16 @@ Once you are happy with your application, you can deploy it to Heroku!
 
 3. **Build and Deploy Client**
 
-   Build the client with production environment variables:
+   Build the client with production environment variables. Set both the API URL (pointing to your Heroku app) and the API secret:
 
    ```bash
    cd client
-   # Set VITE_API_SECRET in your build environment
-   npm run build
+   VITE_API_URL=https://your-app-name.herokuapp.com VITE_API_SECRET=your_generated_secret_key npm run build
    ```
 
    The built files will be in `client/dist/` and should be served by your server.
+
+   **Note:** Make sure the `VITE_API_URL` points to your Heroku app URL and the `VITE_API_SECRET` matches the `API_SECRET` you set in step 2.
 
 4. **Deploy to Heroku**
 
