@@ -19,6 +19,7 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(catalogRoutes);
+app.use(express.static("public"));
 
 app.listen(port, () => {
   console.log(`${getCurrentTimestamp()} - 🎬 index - Authentication server listening on port: ${port}`);
