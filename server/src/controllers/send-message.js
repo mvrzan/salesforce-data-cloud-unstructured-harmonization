@@ -46,7 +46,7 @@ const sendMessage = async (req, res) => {
 
     const data = await response.json();
 
-    console.log(`${getCurrentTimestamp()} ✅ - sendMessage - Agentforce session started!`);
+    console.log(`${getCurrentTimestamp()} ✅ - sendMessage - Message sent!`);
 
     res.status(200).json({
       messages: data.messages,
