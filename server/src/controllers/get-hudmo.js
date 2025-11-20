@@ -45,7 +45,7 @@ const getHudmo = async (req, res) => {
         .replace(/&amp;/g, "&");
     }
 
-    console.log(`${getCurrentTimestamp()} ✅ - getHudmo - Message sent!`);
+    console.log(`${getCurrentTimestamp()} ✅ - getHudmo - Harmonized UDMO received!`);
 
     res.status(200).json({ data });
   } catch (error) {
