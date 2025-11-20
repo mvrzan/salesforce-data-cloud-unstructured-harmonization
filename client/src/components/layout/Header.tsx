@@ -7,7 +7,9 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-2 sm:gap-4 min-w-0">
-            <img src={dataCloudLogo} alt="Data Cloud Logo" className="h-6 sm:h-8 object-contain shrink-0" />
+            <a href="https://www.salesforce.com/data/" target="_blank" rel="noopener noreferrer" className="shrink-0">
+              <img src={dataCloudLogo} alt="Data Cloud Logo" className="h-6 sm:h-8 object-contain" />
+            </a>
             <div className="border-l border-gray-300 h-6 sm:h-8 shrink-0"></div>
             <div className="min-w-0">
               <h1 className="text-sm sm:text-lg font-semibold text-gray-900 truncate">
@@ -21,7 +23,14 @@ export const Header = () => {
               <p className="text-sm font-semibold text-gray-900">Powered by</p>
               <p className="text-xs text-gray-500">Agentforce</p>
             </div>
-            <img src={agentforceLogo} alt="Agentforce" className="h-6 sm:h-7 object-contain" />
+            <a
+              href="https://www.salesforce.com/agentforce/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0"
+            >
+              <img src={agentforceLogo} alt="Agentforce" className="h-6 sm:h-7 object-contain" />
+            </a>
           </div>
         </div>
       </div>
