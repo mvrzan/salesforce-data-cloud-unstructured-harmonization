@@ -19,6 +19,7 @@ export const ChatInput = ({ onSend }: ChatInputProps) => {
     <form onSubmit={handleSubmit} className="border-t border-gray-200 p-4 bg-white">
       <div className="flex gap-2">
         <input
+          id="chatInput"
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
