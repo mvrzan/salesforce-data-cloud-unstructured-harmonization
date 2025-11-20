@@ -21,6 +21,8 @@ export interface Message {
   citedReferences?: CitedReference[];
   properties?: Record<string, unknown>;
   htmlContent?: string;
+  dccid?: string;
+  hudmo?: string;
 }
 
 export interface ChatWidgetProps {
