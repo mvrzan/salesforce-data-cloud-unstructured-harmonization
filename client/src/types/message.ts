@@ -3,7 +3,6 @@ export interface CitedReference {
   name?: string;
   url?: string;
   type?: string;
-  // Add other properties as needed
 }
 
 export interface Message {
