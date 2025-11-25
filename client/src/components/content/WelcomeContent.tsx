@@ -116,7 +116,7 @@ export const WelcomeContent = () => {
               </div>
               <h3 className="font-bold text-sm text-gray-900 mb-1">Citations in Agentforce</h3>
               <p className="text-gray-600 text-xs leading-relaxed">
-                HTML objects appear as citations in Agentforce responses with full source context
+                HTML objects appear as URLs in Agentforce responses
               </p>
             </div>
           </div>
@@ -139,8 +139,8 @@ export const WelcomeContent = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-4">
             <div className="group bg-white rounded-lg p-3 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all cursor-pointer">
-              <div className="flex items-start gap-2">
-                <div className="bg-blue-50 rounded-lg p-2 group-hover:bg-blue-100 transition-colors">
+              <div className="flex items-center gap-2">
+                <div className="bg-blue-50 rounded-lg p-2 group-hover:bg-blue-100 transition-colors shrink-0">
                   <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
@@ -151,14 +151,14 @@ export const WelcomeContent = () => {
                   </svg>
                 </div>
                 <p className="text-gray-700 font-medium text-xs leading-relaxed">
-                  "What's in the customer knowledge base?"
+                  "What are the know issues of the Stryker iOS app?"
                 </p>
               </div>
             </div>
 
             <div className="group bg-white rounded-lg p-3 border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all cursor-pointer">
-              <div className="flex items-start gap-2">
-                <div className="bg-purple-50 rounded-lg p-2 group-hover:bg-purple-100 transition-colors">
+              <div className="flex items-center gap-2">
+                <div className="bg-purple-50 rounded-lg p-2 group-hover:bg-purple-100 transition-colors shrink-0">
                   <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
@@ -175,8 +175,8 @@ export const WelcomeContent = () => {
             </div>
 
             <div className="group bg-white rounded-lg p-3 border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all cursor-pointer">
-              <div className="flex items-start gap-2">
-                <div className="bg-green-50 rounded-lg p-2 group-hover:bg-green-100 transition-colors">
+              <div className="flex items-center gap-2">
+                <div className="bg-green-50 rounded-lg p-2 group-hover:bg-green-100 transition-colors shrink-0">
                   <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
