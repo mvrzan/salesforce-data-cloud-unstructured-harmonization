@@ -1,3 +1,6 @@
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+
 export const WelcomeContent = () => {
   return (
     <div className="w-full bg-linear-to-b from-slate-50 to-white">
@@ -6,9 +9,9 @@ export const WelcomeContent = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center space-y-2 sm:space-y-3">
             <div className="inline-block">
-              <span className="px-3 sm:px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">
+              <Badge variant="secondary" className="bg-blue-100 text-blue-700 hover:bg-blue-200">
                 Data 360 + Agentforce
-              </span>
+              </Badge>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
               Unstructured Data
@@ -37,88 +40,96 @@ export const WelcomeContent = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {/* Card 1 */}
-            <div className="group relative bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-blue-200 transition-all duration-300">
-              <div className="absolute top-2 right-2 text-2xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
-                01
-              </div>
-              <div className="bg-blue-50 w-10 h-10 rounded-lg flex items-center justify-center mb-2 group-hover:bg-blue-100 transition-colors">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-bold text-sm text-gray-900 mb-1">Ingest & Chunk</h3>
-              <p className="text-gray-600 text-xs leading-relaxed">
-                Data 360 ingests unstructured files and breaks them into processable text chunks
-              </p>
-            </div>
+            <Card className="group relative p-0 hover:shadow-lg hover:border-blue-200 transition-all duration-300">
+              <CardContent className="p-4">
+                <div className="absolute top-2 right-2 text-2xl font-bold text-gray-100 group-hover:text-blue-100 transition-colors">
+                  01
+                </div>
+                <div className="bg-blue-50 w-10 h-10 rounded-lg flex items-center justify-center mb-2 group-hover:bg-blue-100 transition-colors">
+                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="font-bold text-sm text-gray-900 mb-1">Ingest & Chunk</h3>
+                <p className="text-gray-600 text-xs leading-relaxed">
+                  Data 360 ingests unstructured files and breaks them into processable text chunks
+                </p>
+              </CardContent>
+            </Card>
 
             {/* Card 2 */}
-            <div className="group relative bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-purple-200 transition-all duration-300">
-              <div className="absolute top-2 right-2 text-2xl font-bold text-gray-100 group-hover:text-purple-100 transition-colors">
-                02
-              </div>
-              <div className="bg-purple-50 w-10 h-10 rounded-lg flex items-center justify-center mb-2 group-hover:bg-purple-100 transition-colors">
-                <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-bold text-sm text-gray-900 mb-1">Vectorize for RAG</h3>
-              <p className="text-gray-600 text-xs leading-relaxed">
-                Chunks are vectorized and used in Retrieval Augmented Generation with Agentforce
-              </p>
-            </div>
+            <Card className="group relative p-0 hover:shadow-lg hover:border-purple-200 transition-all duration-300">
+              <CardContent className="p-4">
+                <div className="absolute top-2 right-2 text-2xl font-bold text-gray-100 group-hover:text-purple-100 transition-colors">
+                  02
+                </div>
+                <div className="bg-purple-50 w-10 h-10 rounded-lg flex items-center justify-center mb-2 group-hover:bg-purple-100 transition-colors">
+                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
+                    />
+                  </svg>
+                </div>
+                <h3 className="font-bold text-sm text-gray-900 mb-1">Vectorize for RAG</h3>
+                <p className="text-gray-600 text-xs leading-relaxed">
+                  Chunks are vectorized and used in Retrieval Augmented Generation with Agentforce
+                </p>
+              </CardContent>
+            </Card>
 
             {/* Card 3 */}
-            <div className="group relative bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-indigo-200 transition-all duration-300">
-              <div className="absolute top-2 right-2 text-2xl font-bold text-gray-100 group-hover:text-indigo-100 transition-colors">
-                03
-              </div>
-              <div className="bg-indigo-50 w-10 h-10 rounded-lg flex items-center justify-center mb-2 group-hover:bg-indigo-100 transition-colors">
-                <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-bold text-sm text-gray-900 mb-1">Create HTML Objects</h3>
-              <p className="text-gray-600 text-xs leading-relaxed">
-                Harmonized data model objects are created with HTML representations of the data
-              </p>
-            </div>
+            <Card className="group relative p-0 hover:shadow-lg hover:border-indigo-200 transition-all duration-300">
+              <CardContent className="p-4">
+                <div className="absolute top-2 right-2 text-2xl font-bold text-gray-100 group-hover:text-indigo-100 transition-colors">
+                  03
+                </div>
+                <div className="bg-indigo-50 w-10 h-10 rounded-lg flex items-center justify-center mb-2 group-hover:bg-indigo-100 transition-colors">
+                  <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="font-bold text-sm text-gray-900 mb-1">Create HTML Objects</h3>
+                <p className="text-gray-600 text-xs leading-relaxed">
+                  Harmonized data model objects are created with HTML representations of the data
+                </p>
+              </CardContent>
+            </Card>
 
             {/* Card 4 */}
-            <div className="group relative bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-lg hover:border-green-200 transition-all duration-300">
-              <div className="absolute top-2 right-2 text-2xl font-bold text-gray-100 group-hover:text-green-100 transition-colors">
-                04
-              </div>
-              <div className="bg-green-50 w-10 h-10 rounded-lg flex items-center justify-center mb-2 group-hover:bg-green-100 transition-colors">
-                <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-bold text-sm text-gray-900 mb-1">Citations in Agentforce</h3>
-              <p className="text-gray-600 text-xs leading-relaxed">
-                HTML objects appear as URLs in Agentforce responses
-              </p>
-            </div>
+            <Card className="group relative p-0 hover:shadow-lg hover:border-green-200 transition-all duration-300">
+              <CardContent className="p-4">
+                <div className="absolute top-2 right-2 text-2xl font-bold text-gray-100 group-hover:text-green-100 transition-colors">
+                  04
+                </div>
+                <div className="bg-green-50 w-10 h-10 rounded-lg flex items-center justify-center mb-2 group-hover:bg-green-100 transition-colors">
+                  <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="font-bold text-sm text-gray-900 mb-1">Citations in Agentforce</h3>
+                <p className="text-gray-600 text-xs leading-relaxed">
+                  HTML objects appear as URLs in Agentforce responses
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -130,65 +141,71 @@ export const WelcomeContent = () => {
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">See It in Action</h2>
             <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto px-4">
               Ask Agentforce questions, then{" "}
-              <span className="font-semibold text-purple-700 bg-purple-50 px-2 py-0.5 rounded">
+              <Badge variant="secondary" className="bg-purple-50 text-purple-700 hover:bg-purple-100">
                 click on the responses
-              </span>{" "}
+              </Badge>{" "}
               to view detailed metadata, citations, and HTML content
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-4">
-            <div className="group bg-white rounded-lg p-3 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all cursor-pointer">
-              <div className="flex items-center gap-2">
-                <div className="bg-blue-50 rounded-lg p-2 group-hover:bg-blue-100 transition-colors shrink-0">
-                  <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                    />
-                  </svg>
+            <Card className="group p-0 hover:border-blue-300 hover:shadow-lg transition-all cursor-pointer">
+              <CardContent className="p-3">
+                <div className="flex items-center gap-2">
+                  <div className="bg-blue-50 rounded-lg p-2 group-hover:bg-blue-100 transition-colors shrink-0">
+                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                      />
+                    </svg>
+                  </div>
+                  <p className="text-gray-700 font-medium text-xs leading-relaxed">
+                    "What are the know issues of the Stryker iOS app?"
+                  </p>
                 </div>
-                <p className="text-gray-700 font-medium text-xs leading-relaxed">
-                  "What are the know issues of the Stryker iOS app?"
-                </p>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
 
-            <div className="group bg-white rounded-lg p-3 border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all cursor-pointer">
-              <div className="flex items-center gap-2">
-                <div className="bg-purple-50 rounded-lg p-2 group-hover:bg-purple-100 transition-colors shrink-0">
-                  <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
+            <Card className="group p-0 hover:border-purple-300 hover:shadow-lg transition-all cursor-pointer">
+              <CardContent className="p-3">
+                <div className="flex items-center gap-2">
+                  <div className="bg-purple-50 rounded-lg p-2 group-hover:bg-purple-100 transition-colors shrink-0">
+                    <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                  </div>
+                  <p className="text-gray-700 font-medium text-xs leading-relaxed">
+                    "Show me product documentation details"
+                  </p>
                 </div>
-                <p className="text-gray-700 font-medium text-xs leading-relaxed">
-                  "Show me product documentation details"
-                </p>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
 
-            <div className="group bg-white rounded-lg p-3 border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all cursor-pointer">
-              <div className="flex items-center gap-2">
-                <div className="bg-green-50 rounded-lg p-2 group-hover:bg-green-100 transition-colors shrink-0">
-                  <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                    />
-                  </svg>
+            <Card className="group p-0 hover:border-green-300 hover:shadow-lg transition-all cursor-pointer">
+              <CardContent className="p-3">
+                <div className="flex items-center gap-2">
+                  <div className="bg-green-50 rounded-lg p-2 group-hover:bg-green-100 transition-colors shrink-0">
+                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                      />
+                    </svg>
+                  </div>
+                  <p className="text-gray-700 font-medium text-xs leading-relaxed">"Find service case solutions"</p>
                 </div>
-                <p className="text-gray-700 font-medium text-xs leading-relaxed">"Find service case solutions"</p>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
 
           <div className="text-center">
