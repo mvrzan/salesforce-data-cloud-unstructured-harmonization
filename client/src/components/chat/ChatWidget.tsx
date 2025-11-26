@@ -14,20 +14,24 @@ export const ChatWidget = ({
   onToggle,
 }: ChatWidgetProps) => {
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 max-w-[calc(100vw-2rem)] sm:max-w-none">
+    <div className="fixed inset-0 sm:inset-auto sm:bottom-6 sm:right-6 z-50 sm:max-w-none pointer-events-none">
       {isOpen ? (
-        <ChatWindow
-          messages={messages}
-          onMessageClick={onMessageClick}
-          onSendMessage={onSendMessage}
-          onDeleteSession={onDeleteSession}
-          onStartNewSession={onStartNewSession}
-          sessionInitialized={sessionInitialized}
-          isLoading={isLoading}
-          onClose={onToggle}
-        />
+        <div className="pointer-events-auto">
+          <ChatWindow
+            messages={messages}
+            onMessageClick={onMessageClick}
+            onSendMessage={onSendMessage}
+            onDeleteSession={onDeleteSession}
+            onStartNewSession={onStartNewSession}
+            sessionInitialized={sessionInitialized}
+            isLoading={isLoading}
+            onClose={onToggle}
+          />
+        </div>
       ) : (
-        <ChatToggle onClick={onToggle} />
+        <div className="pointer-events-auto">
+          <ChatToggle onClick={onToggle} />
+        </div>
       )}
     </div>
   );
