@@ -36,7 +36,7 @@ export const ChatWindow = ({
   }, [messages]);
 
   return (
-    <div className="w-full sm:w-96 h-[600px] bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden">
+    <div className="w-full sm:w-96 h-[100dvh] sm:h-[600px] sm:rounded-lg bg-white shadow-2xl flex flex-col overflow-hidden">
       {/* Header */}
       <div className="bg-linear-to-r from-blue-600 to-purple-600 text-white p-3 sm:p-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
