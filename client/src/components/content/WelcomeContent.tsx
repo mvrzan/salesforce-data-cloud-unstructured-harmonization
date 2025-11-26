@@ -1,7 +1,16 @@
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const WelcomeContent = () => {
+  const [copiedQuestion, setCopiedQuestion] = useState<string | null>(null);
+
+  const handleCopyQuestion = (question: string) => {
+    navigator.clipboard.writeText(question);
+    setCopiedQuestion(question);
+    setTimeout(() => setCopiedQuestion(null), 2000);
+  };
+
   return (
     <div className="w-full bg-linear-to-b from-slate-50 to-white">
       {/* Hero Introduction - Clean & Modern */}
@@ -149,60 +158,113 @@ export const WelcomeContent = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-4">
-            <Card className="group p-0 hover:border-blue-300 hover:shadow-lg transition-all cursor-pointer">
+            <Card
+              className={`group p-0 transition-all cursor-pointer ${
+                copiedQuestion === "What are the know issues of the Stryker iOS app?"
+                  ? "border-green-500 shadow-lg bg-green-50"
+                  : "hover:border-blue-300 hover:shadow-lg"
+              }`}
+              onClick={() => handleCopyQuestion("What are the know issues of the Stryker iOS app?")}
+            >
               <CardContent className="p-3">
                 <div className="flex items-center gap-2">
-                  <div className="bg-blue-50 rounded-lg p-2 group-hover:bg-blue-100 transition-colors shrink-0">
-                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                      />
-                    </svg>
-                  </div>
+                  {copiedQuestion === "What are the know issues of the Stryker iOS app?" ? (
+                    <div className="bg-green-100 rounded-lg p-2 shrink-0">
+                      <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  ) : (
+                    <div className="bg-blue-50 rounded-lg p-2 group-hover:bg-blue-100 transition-colors shrink-0">
+                      <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                        />
+                      </svg>
+                    </div>
+                  )}
                   <p className="text-gray-700 font-medium text-xs leading-relaxed">
-                    "What are the know issues of the Stryker iOS app?"
+                    {copiedQuestion === "What are the know issues of the Stryker iOS app?"
+                      ? "Copied to clipboard!"
+                      : '"What are the know issues of the Stryker iOS app?"'}
                   </p>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="group p-0 hover:border-purple-300 hover:shadow-lg transition-all cursor-pointer">
+            <Card
+              className={`group p-0 transition-all cursor-pointer ${
+                copiedQuestion === "Show me product documentation details"
+                  ? "border-green-500 shadow-lg bg-green-50"
+                  : "hover:border-purple-300 hover:shadow-lg"
+              }`}
+              onClick={() => handleCopyQuestion("Show me product documentation details")}
+            >
               <CardContent className="p-3">
                 <div className="flex items-center gap-2">
-                  <div className="bg-purple-50 rounded-lg p-2 group-hover:bg-purple-100 transition-colors shrink-0">
-                    <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                  </div>
+                  {copiedQuestion === "Show me product documentation details" ? (
+                    <div className="bg-green-100 rounded-lg p-2 shrink-0">
+                      <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  ) : (
+                    <div className="bg-purple-50 rounded-lg p-2 group-hover:bg-purple-100 transition-colors shrink-0">
+                      <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </div>
+                  )}
                   <p className="text-gray-700 font-medium text-xs leading-relaxed">
-                    "Show me product documentation details"
+                    {copiedQuestion === "Show me product documentation details"
+                      ? "Copied to clipboard!"
+                      : '"Show me product documentation details"'}
                   </p>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="group p-0 hover:border-green-300 hover:shadow-lg transition-all cursor-pointer">
+            <Card
+              className={`group p-0 transition-all cursor-pointer ${
+                copiedQuestion === "Find service case solutions"
+                  ? "border-green-500 shadow-lg bg-green-50"
+                  : "hover:border-green-300 hover:shadow-lg"
+              }`}
+              onClick={() => handleCopyQuestion("Find service case solutions")}
+            >
               <CardContent className="p-3">
                 <div className="flex items-center gap-2">
-                  <div className="bg-green-50 rounded-lg p-2 group-hover:bg-green-100 transition-colors shrink-0">
-                    <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                      />
-                    </svg>
-                  </div>
-                  <p className="text-gray-700 font-medium text-xs leading-relaxed">"Find service case solutions"</p>
+                  {copiedQuestion === "Find service case solutions" ? (
+                    <div className="bg-green-100 rounded-lg p-2 shrink-0">
+                      <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  ) : (
+                    <div className="bg-green-50 rounded-lg p-2 group-hover:bg-green-100 transition-colors shrink-0">
+                      <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                  <p className="text-gray-700 font-medium text-xs leading-relaxed">
+                    {copiedQuestion === "Find service case solutions"
+                      ? "Copied to clipboard!"
+                      : '"Find service case solutions"'}
+                  </p>
                 </div>
               </CardContent>
             </Card>
