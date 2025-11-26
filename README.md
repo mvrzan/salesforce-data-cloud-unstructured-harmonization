@@ -126,6 +126,7 @@ To run this application locally, you will need the following:
 - Node.js version 20 or later installed (type `node -v` in your terminal to check). Follow [instructions](https://nodejs.org/en/download) if you don't have node installed
 - npm version 10.0.0 or later installed (type `npm -v` in your terminal to check). Node.js includes `npm`
 - git installed. Follow the instructions to [install git](https://git-scm.com/downloads)
+- A [Salesforce](https://www.salesforce.com) account enabled with [Agentforce](https://www.salesforce.com/agentforce/)
 
 ## Setup
 
@@ -200,7 +201,7 @@ To run this application locally, you will need the following:
    Start the server (from the `server` directory):
 
    ```bash
-   npm start
+   npm run dev
    ```
 
    In a new terminal, start the client (from the `client` directory):
