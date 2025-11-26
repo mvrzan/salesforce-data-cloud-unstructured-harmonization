@@ -45,26 +45,20 @@ The demo showcases how Data Cloud can:
 
 1. **Data Ingestion**: Unstructured data is uploaded to Data Cloud
 2. **Chunking**: Data is split into manageable chunks for processing
-3. **Vectorization**: Each chunk is converted into vector embeddings
-4. **Storage**: Vectorized data is stored as HTML objects in Data Cloud
-5. **Retrieval**: Agentforce uses RAG (Retrieval-Augmented Generation) to query relevant data
+3. **Harmonization**: Each chunk is converted into an Harmonized Unstructured Data Lake Object (HUDLO)
+4. **Storage**: Vectorized data is stored as HTML objects in Data Cloud and mapped to Harmonized Unstructured Data Model Object (HUDMO)
+5. **Retrieval**: Agentforce uses RAG (Retrieval-Augmented Generation) to query relevant HUDMO
 
 **User Interaction Flow:**
 
 1. User opens the chat widget and initiates an Agentforce session
 2. User sends natural language queries about the data
-3. Frontend generates HMAC-SHA256 signature for secure API authentication
+3. Frontend generates HMAC-SHA256 signature for API authentication
 4. Backend validates the request and forwards it to Agentforce
 5. Agentforce retrieves relevant data using its internal logic
-6. Response includes the answer, cited references, metrics, and confidence scores
-7. User can view detailed metadata including source documents and performance metrics
-
-**Security:**
-
-- All API requests use HMAC-SHA256 signature authentication
-- Timestamps prevent replay attacks (5-minute validity window)
-- Signatures bind to specific HTTP methods and paths
-- Session management uses unique external keys with Agentforce session IDs
+6. Response includes the answer and response message metadata
+7. User can view detailed metadata
+8. You can fetch the underlying HTML used for the Agentforce response generation
 
 ## API Specification
 
