@@ -8,7 +8,6 @@ import { ChatWidget } from "./components/chat/ChatWidget";
 import { generateSignature } from "./utils/requestSigner";
 import "./App.css";
 
-// API URL from environment variable
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 function App() {
@@ -20,23 +19,22 @@ function App() {
   const [agentforceSessionId, setAgentforceSessionId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Manage external session key (used to create the session)
   const [externalSessionKey] = useState<string>(() => {
-    // Check if we have an existing session in sessionStorage
     const existingSession = sessionStorage.getItem("agentforce-session-key");
+
     if (existingSession) {
       console.log("Using existing external session key:", existingSession);
+
       return existingSession;
     }
 
-    // Generate new UUID if none exists
     const newSessionKey = crypto.randomUUID();
     sessionStorage.setItem("agentforce-session-key", newSessionKey);
     console.log("Generated new external session key:", newSessionKey);
+
     return newSessionKey;
   });
 
-  // Handle new message from user
   const handleSendMessage = async (content: string) => {
     const userMessage: Message = {
       id: `msg-${Date.now()}`,
@@ -49,10 +47,8 @@ function App() {
     setIsLoading(true);
 
     try {
-      // Generate signature for request
       const { timestamp, signature } = await generateSignature("POST", "/api/v1/send-message");
 
-      // Send message to Agentforce with sessionId and sequenceId
       const response = await fetch(`${API_URL}/api/v1/send-message`, {
         method: "POST",
         headers: {
@@ -73,17 +69,14 @@ function App() {
 
       const data = await response.json();
 
-      // Increment sequence for next message
       setMessageSequence((prev) => prev + 1);
 
-      // Extract the first message from the messages array
       const agentResponse = data.messages?.[0];
 
       if (!agentResponse) {
         throw new Error("No message received from agent");
       }
 
-      // Create bot message from the response
       const botMessage: Message = {
         id: agentResponse.id || `msg-${Date.now()}-bot`,
         content: agentResponse.message || "Response received",
@@ -103,7 +96,6 @@ function App() {
     } catch (error) {
       console.error("Error sending message:", error);
 
-      // Show error message to user
       const errorMessage: Message = {
         id: `msg-${Date.now()}-error`,
         content: "Sorry, there was an error processing your request.",
@@ -117,20 +109,16 @@ function App() {
     }
   };
 
-  // Handle message click
   const handleMessageClick = (message: Message) => {
-    // Show details for bot messages (they have the Agentforce data)
     if (message.sender === "bot") {
       setSelectedMessage(message);
     }
   };
 
-  // Handle back to welcome
   const handleBackToWelcome = () => {
     setSelectedMessage(null);
   };
 
-  // Handle delete session
   const handleDeleteSession = async () => {
     if (!agentforceSessionId) {
       console.log("No active session to delete");
@@ -140,7 +128,6 @@ function App() {
     try {
       console.log("Deleting Agentforce session...");
 
-      // Generate signature for request
       const { timestamp, signature } = await generateSignature("DELETE", "/api/v1/delete-session");
 
       const response = await fetch(`${API_URL}/api/v1/delete-session`, {
@@ -161,13 +148,11 @@ function App() {
 
       console.log("Session deleted successfully");
 
-      // Reset the chat state
       setMessages([]);
       setSessionInitialized(false);
       setAgentforceSessionId(null);
       setMessageSequence(1);
 
-      // Generate new external session key for next session
       const newSessionKey = crypto.randomUUID();
       sessionStorage.setItem("agentforce-session-key", newSessionKey);
       console.log("Generated new external session key:", newSessionKey);
@@ -176,7 +161,6 @@ function App() {
     }
   };
 
-  // Handle starting a new session
   const handleStartNewSession = async () => {
     setIsLoading(true);
 
@@ -185,7 +169,6 @@ function App() {
 
       console.log("Initializing new Agentforce session...");
 
-      // Generate signature for request
       const { timestamp, signature } = await generateSignature(
         "GET",
         `/api/v1/start-session?sessionId=${newSessionKey}`
@@ -205,11 +188,9 @@ function App() {
       const data = await response.json();
       console.log("New session initialized:", data);
 
-      // Store the actual session ID returned by Agentforce
       setAgentforceSessionId(data.sessionId);
       setSessionInitialized(true);
 
-      // Add the welcome message from Agentforce
       if (data.messages?.[0]) {
         const welcomeMessage: Message = {
           id: data.messages[0].id || `msg-${Date.now()}-welcome`,
@@ -234,19 +215,16 @@ function App() {
     }
   };
 
-  // Handle chat toggle - initialize session when opened
   const handleChatToggle = async () => {
     const newIsOpen = !isChatOpen;
 
-    // Initialize session when chat is opened for the first time
     if (newIsOpen && !sessionInitialized) {
       setIsLoading(true);
-      setIsChatOpen(newIsOpen); // Open chat and show loading
+      setIsChatOpen(newIsOpen);
 
       try {
         console.log("Initializing Agentforce session...");
 
-        // Generate signature for request
         const { timestamp, signature } = await generateSignature(
           "GET",
           `/api/v1/start-session?sessionId=${externalSessionKey}`
@@ -294,7 +272,6 @@ function App() {
         setIsLoading(false);
       }
     } else {
-      // Just toggle if session already initialized
       setIsChatOpen(newIsOpen);
     }
   };
