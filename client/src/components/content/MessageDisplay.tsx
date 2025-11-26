@@ -71,7 +71,7 @@ export const MessageDisplay = ({ message, onBack }: MessageDisplayProps) => {
 
   return (
     <div className="bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 overflow-x-hidden">
         <Button onClick={onBack} variant="outline" className="mb-6 flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path
@@ -187,7 +187,9 @@ export const MessageDisplay = ({ message, onBack }: MessageDisplayProps) => {
               )}
               <div className="col-span-1 sm:col-span-2 bg-gray-50 rounded-lg p-4 border border-gray-200">
                 <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide block mb-2">Content</span>
-                <p className="text-gray-900 text-sm leading-relaxed">{message.message || message.content}</p>
+                <p className="text-gray-900 text-sm leading-relaxed wrap-break-word">
+                  {message.message || message.content}
+                </p>
               </div>
               {message.dccid && message.hudmo && (
                 <div className="col-span-1 sm:col-span-2">
@@ -354,8 +356,10 @@ export const MessageDisplay = ({ message, onBack }: MessageDisplayProps) => {
             </CardHeader>
             <Separator />
             <CardContent>
-              <div className="bg-gray-900 rounded-lg p-4 overflow-auto border border-gray-700">
-                <pre className="text-sm text-green-400 font-mono">{JSON.stringify(message.result, null, 2)}</pre>
+              <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto border border-gray-700">
+                <pre className="text-sm text-green-400 font-mono whitespace-pre-wrap wrap-break-word">
+                  {JSON.stringify(message.result, null, 2)}
+                </pre>
               </div>
             </CardContent>
           </Card>
@@ -423,7 +427,7 @@ export const MessageDisplay = ({ message, onBack }: MessageDisplayProps) => {
             <Separator />
             <CardContent>
               <div
-                className="prose max-w-none bg-linear-to-br from-gray-50 to-rose-50 rounded-lg p-6 border-2 border-rose-200 overflow-auto"
+                className="prose max-w-none bg-linear-to-br from-gray-50 to-rose-50 rounded-lg p-6 border-2 border-rose-200 overflow-x-auto"
                 dangerouslySetInnerHTML={{ __html: message.htmlContent }}
               />
             </CardContent>
