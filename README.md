@@ -66,6 +66,8 @@ The demo showcases how Data Cloud can:
 
 ## Demo
 
+![](./screenshots/demo.gif)
+
 ### Welcome screen
 
 ![](./screenshots/welcome-screen.png)
