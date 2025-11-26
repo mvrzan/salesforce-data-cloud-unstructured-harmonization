@@ -14,7 +14,7 @@ export const WelcomeContent = () => {
   return (
     <div className="w-full bg-linear-to-b from-slate-50 to-white">
       {/* Hero Introduction - Clean & Modern */}
-      <section className="py-6 sm:py-8 px-4 sm:px-6">
+      <section className="py-6 sm:py-8 px-6 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center space-y-2 sm:space-y-3">
             <div className="inline-block">
@@ -29,7 +29,7 @@ export const WelcomeContent = () => {
                 Harmonization
               </span>
             </h1>
-            <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl mx-auto px-4">
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl mx-auto">
               Transform unstructured data into actionable knowledge. Data 360 converts PDFs, text, videos, and audio
               into harmonized HTML objects—accessible in Salesforce CRM and Agentforce citations.
             </p>
@@ -38,11 +38,11 @@ export const WelcomeContent = () => {
       </section>
 
       {/* How It Works - Card Layout */}
-      <section className="py-6 sm:py-8 px-4 sm:px-6">
+      <section className="py-6 sm:py-8 px-6 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-4 sm:mb-6">
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">From Raw Data to Citations</h2>
-            <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto px-4">
+            <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto">
               A seamless pipeline that turns unstructured content into intelligent, citable knowledge
             </p>
           </div>
@@ -144,11 +144,11 @@ export const WelcomeContent = () => {
       </section>
 
       {/* Try It Out - Minimal CTA */}
-      <section className="py-4 sm:py-6 px-4 sm:px-6">
+      <section className="py-4 sm:py-6 px-6 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-4 sm:mb-5">
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">See It in Action</h2>
-            <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto px-4">
+            <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto">
               Ask Agentforce questions, then{" "}
               <Badge variant="secondary" className="bg-purple-50 text-purple-700 hover:bg-purple-100">
                 click on the responses
