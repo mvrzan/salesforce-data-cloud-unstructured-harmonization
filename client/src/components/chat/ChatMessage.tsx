@@ -6,10 +6,8 @@ interface ChatMessageProps {
   onClick: (message: Message) => void;
 }
 
-// Helper function to extract dccid and hudmo from URL
 const extractUrlParams = (url: string): { dccid: string | null; hudmo: string | null } => {
   try {
-    // Clean up URL by removing trailing punctuation and special characters
     const cleanUrl = url.replace(/[).,;!?]+$/, "");
     const urlObj = new URL(cleanUrl);
     const dccid = urlObj.searchParams.get("c__dccid");
@@ -20,29 +18,25 @@ const extractUrlParams = (url: string): { dccid: string | null; hudmo: string | 
   }
 };
 
-// Helper function to extract all URLs from message content
 const extractUrlsFromContent = (content: string): string[] => {
   const urlRegex = /(https?:\/\/[^\s)]+)/g;
   const matches = content.match(urlRegex) || [];
-  // Clean up trailing punctuation from URLs
+
   return matches.map((url) => url.replace(/[).,;!?]+$/, ""));
 };
 
-// Helper function to handle URL clicks
 const handleUrlClick = (url: string, e: React.MouseEvent) => {
   e.stopPropagation();
-  // Just open URL in new tab, don't extract params here
+
   window.open(url, "_blank", "noopener,noreferrer");
 };
 
-// Helper function to parse message content and convert URLs to clickable links
 const parseMessageContent = (content: string) => {
   const urlRegex = /(https?:\/\/[^\s)]+)/g;
   const parts = content.split(urlRegex);
 
   return parts.map((part, index) => {
     if (part.match(urlRegex)) {
-      // Clean trailing punctuation for display
       const cleanUrl = part.replace(/[).,;!?]+$/, "");
       const trailingPunct = part.slice(cleanUrl.length);
 
@@ -68,30 +62,23 @@ export const ChatMessage = ({ message, onClick }: ChatMessageProps) => {
   const isBot = message.sender === "bot";
 
   const handleMessageClick = () => {
-    // Extract URLs from message content
     const urls = extractUrlsFromContent(message.content);
 
-    // Create an updated message object with dccid and hudmo if available
     let updatedMessage = message;
 
-    // If there are URLs, extract dccid and hudmo from the first one
     if (urls.length > 0) {
       const { dccid, hudmo } = extractUrlParams(urls[0]);
 
       if (dccid && hudmo) {
         console.log("Extracted URL parameters from message:", { dccid, hudmo });
-        // Add dccid and hudmo to the message object
         updatedMessage = {
           ...message,
           dccid,
           hudmo,
         };
-        // TODO: Call backend API with dccid and hudmo
-        // Example: fetchDataCloudContent(dccid, hudmo);
       }
     }
 
-    // Call the original onClick handler with the updated message
     onClick(updatedMessage);
   };
 
