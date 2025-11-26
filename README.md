@@ -14,6 +14,7 @@ Learn how you can use Harmonized Unstructured data with Data 360 and Agentforce.
 - [Table of Contents](#table-of-contents)
   - [What does it do?](#what-does-it-do)
   - [How does it work?](#how-does-it-work)
+  - [Demo](#demo)
   - [API Specification](#api-specification)
     - [Architecture diagram](#architecture-diagram)
   - [Technologies used](#technologies-used)
@@ -59,6 +60,8 @@ The demo showcases how Data Cloud can:
 6. Response includes the answer and response message metadata
 7. User can view detailed metadata
 8. You can fetch the underlying HTML used for the Agentforce response generation
+
+## Demo
 
 ## API Specification
 
