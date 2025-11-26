@@ -6,10 +6,16 @@ export const ChatToggle = ({ onClick }: ChatToggleProps) => {
   return (
     <button
       onClick={onClick}
-      className="w-16 h-16 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group"
+      className="w-14 h-14 sm:w-16 sm:h-16 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group fixed bottom-4 right-4 sm:static"
       aria-label="Open chat"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-7 w-7 sm:h-8 sm:w-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
