@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import type { Message } from "../../types/message";
 import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
+import { Button } from "@/components/ui/button";
 
 interface ChatWindowProps {
   messages: Message[];
@@ -43,9 +44,11 @@ export const ChatWindow = ({
           <h3 className="font-semibold text-sm sm:text-base">Agentforce Assistant</h3>
         </div>
         <div className="flex items-center gap-2">
-          <button
+          <Button
             onClick={onDeleteSession}
-            className="hover:bg-black hover:bg-opacity-20 rounded-full p-1 transition-colors"
+            variant="ghost"
+            size="icon"
+            className="hover:bg-black hover:bg-opacity-20 text-white"
             title="End Session"
           >
             <svg
@@ -62,10 +65,12 @@ export const ChatWindow = ({
                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
               />
             </svg>
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={onClose}
-            className="hover:bg-black hover:bg-opacity-20 rounded-full p-1 transition-colors"
+            variant="ghost"
+            size="icon"
+            className="hover:bg-black hover:bg-opacity-20 text-white"
             title="Close Chat"
           >
             <svg
@@ -77,7 +82,7 @@ export const ChatWindow = ({
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -90,12 +95,9 @@ export const ChatWindow = ({
               <br />
               <span className="text-xs sm:text-sm">Ready to start a new conversation?</span>
             </p>
-            <button
-              onClick={onStartNewSession}
-              className="px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg text-sm sm:text-base font-semibold hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
-            >
+            <Button onClick={onStartNewSession} size="lg" className="shadow-md hover:shadow-lg">
               Start Another Agentforce Session
-            </button>
+            </Button>
           </div>
         ) : messages.length === 0 && !isLoading ? (
           <div className="flex items-center justify-center h-full text-gray-500 px-4">
