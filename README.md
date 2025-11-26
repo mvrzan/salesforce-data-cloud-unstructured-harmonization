@@ -15,6 +15,9 @@ Learn how you can use Harmonized Unstructured data with Data 360 and Agentforce.
   - [What does it do?](#what-does-it-do)
   - [How does it work?](#how-does-it-work)
   - [Demo](#demo)
+    - [Welcome screen](#welcome-screen)
+    - [Message details](#message-details)
+    - [Harmonized Unstructured Data Modal](#harmonized-unstructured-data-modal)
   - [API Specification](#api-specification)
     - [Architecture diagram](#architecture-diagram)
   - [Technologies used](#technologies-used)
@@ -62,6 +65,18 @@ The demo showcases how Data Cloud can:
 8. You can fetch the underlying HTML used for the Agentforce response generation
 
 ## Demo
+
+### Welcome screen
+
+![](./screenshots/welcome-screen.png)
+
+### Message details
+
+![](./screenshots/message-details.png)
+
+### Harmonized Unstructured Data Modal
+
+![](./screenshots/hudmo-modal.png)
 
 ## API Specification
 
