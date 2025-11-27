@@ -28,7 +28,7 @@ export const HarmonizedDataModal = ({ isOpen, onClose, data }: HarmonizedDataMod
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-6xl! w-full h-[100dvh] sm:h-[90vh] flex flex-col p-0 gap-0 sm:rounded-lg">
+      <DialogContent className="max-w-6xl! w-full h-dvh sm:h-[90vh] flex flex-col p-0 gap-0 sm:rounded-lg">
         <DialogHeader className="px-6 py-4 border-b flex flex-row items-center space-y-0 gap-3 shrink-0">
           <div className="bg-linear-to-r from-teal-500 to-cyan-600 rounded-lg p-2 shrink-0">
             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
