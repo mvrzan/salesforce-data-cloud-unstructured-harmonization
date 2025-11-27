@@ -197,15 +197,15 @@ export const WelcomeContent = () => {
 
             <Card
               className={`group p-0 transition-all cursor-pointer ${
-                copiedQuestion === "Show me product documentation details"
+                copiedQuestion === "What are the iOS system limitations for the Stryker app?"
                   ? "border-green-500 shadow-lg bg-green-50"
                   : "hover:border-purple-300 hover:shadow-lg"
               }`}
-              onClick={() => handleCopyQuestion("Show me product documentation details")}
+              onClick={() => handleCopyQuestion("What are the iOS system limitations for the Stryker app?")}
             >
               <CardContent className="p-3">
                 <div className="flex items-center gap-2">
-                  {copiedQuestion === "Show me product documentation details" ? (
+                  {copiedQuestion === "What are the iOS system limitations for the Stryker app?" ? (
                     <div className="bg-green-100 rounded-lg p-2 shrink-0">
                       <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -224,9 +224,9 @@ export const WelcomeContent = () => {
                     </div>
                   )}
                   <p className="text-gray-700 font-medium text-xs leading-relaxed">
-                    {copiedQuestion === "Show me product documentation details"
+                    {copiedQuestion === "What are the iOS system limitations for the Stryker app?"
                       ? "Copied to clipboard!"
-                      : '"Show me product documentation details"'}
+                      : '"What are the iOS system limitations for the Stryker app?"'}
                   </p>
                 </div>
               </CardContent>
@@ -234,15 +234,15 @@ export const WelcomeContent = () => {
 
             <Card
               className={`group p-0 transition-all cursor-pointer ${
-                copiedQuestion === "Find service case solutions"
+                copiedQuestion === "Are there any issues with notifications in the Striker app?"
                   ? "border-green-500 shadow-lg bg-green-50"
                   : "hover:border-green-300 hover:shadow-lg"
               }`}
-              onClick={() => handleCopyQuestion("Find service case solutions")}
+              onClick={() => handleCopyQuestion("Are there any issues with notifications in the Striker app?")}
             >
               <CardContent className="p-3">
                 <div className="flex items-center gap-2">
-                  {copiedQuestion === "Find service case solutions" ? (
+                  {copiedQuestion === "Are there any issues with notifications in the Striker app?" ? (
                     <div className="bg-green-100 rounded-lg p-2 shrink-0">
                       <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -261,9 +261,9 @@ export const WelcomeContent = () => {
                     </div>
                   )}
                   <p className="text-gray-700 font-medium text-xs leading-relaxed">
-                    {copiedQuestion === "Find service case solutions"
+                    {copiedQuestion === "Are there any issues with notifications in the Striker app?"
                       ? "Copied to clipboard!"
-                      : '"Find service case solutions"'}
+                      : '"Are there any issues with notifications in the Striker app?"'}
                   </p>
                 </div>
               </CardContent>
