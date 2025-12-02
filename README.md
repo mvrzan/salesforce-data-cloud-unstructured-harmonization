@@ -82,9 +82,9 @@ The demo showcases how Data Cloud can:
 
 ## API Specification
 
-The application exposes three RESTful endpoints, all protected by HMAC-SHA256 signature validation:
+The application exposes four RESTful endpoints, all protected by HMAC-SHA256 signature validation:
 
-**POST /api/v1/start-session**
+**GET /api/v1/start-session**
 
 - Initializes a new Agentforce session
 - Query Parameters: `sessionId` (external session key)
@@ -104,6 +104,13 @@ The application exposes three RESTful endpoints, all protected by HMAC-SHA256 si
 - Headers: `X-Timestamp`, `X-Signature`, `Content-Type: application/json`
 - Body: `{ sessionId }`
 - Returns: `{ success: true }`
+
+**POST /api/v1/get-hudmo**
+
+- Retrieves harmonized unstructured data model object (HUDMO) content
+- Headers: `X-Timestamp`, `X-Signature`, `Content-Type: application/json`
+- Body: `{ hudmoName, dccid }` (HUDMO name and Data Cloud Content ID)
+- Returns: `{ data }` (Harmonized HTML content with metadata and source URL)
 
 **Authentication:**
 All requests require HMAC-SHA256 signature in headers:
