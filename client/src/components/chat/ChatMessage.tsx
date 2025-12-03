@@ -10,8 +10,15 @@ const extractUrlParams = (url: string): { dccid: string | null; hudmo: string | 
   try {
     const cleanUrl = url.replace(/[).,;!?]+$/, "");
     const urlObj = new URL(cleanUrl);
-    const dccid = urlObj.searchParams.get("c__dccid");
-    const hudmo = urlObj.searchParams.get("c__hudmo");
+
+    let dccid = urlObj.searchParams.get("c__dccid");
+    let hudmo = urlObj.searchParams.get("c__hudmo");
+
+    if (!dccid && !hudmo) {
+      dccid = urlObj.searchParams.get("c__contentId");
+      hudmo = urlObj.searchParams.get("c__objectApiName");
+    }
+
     return { dccid, hudmo };
   } catch {
     return { dccid: null, hudmo: null };
